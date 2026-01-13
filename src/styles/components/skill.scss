@@ -1,0 +1,58 @@
+.section__skill {
+    width: 100%;
+    height: 100vh;
+
+    .skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
+
+        @media screen and (max-width: $breakpoint-sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .bar {
+        position: relative;
+        width: 100%;
+        color: var(--color-primary);
+
+        .thumb {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            border-radius: 36px;
+            margin-top: var(--spacing-md);
+            background: #eee;
+
+            span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                border-radius: 50px;
+                background: var(--color-primary);
+                width: 0%; // start at 0, GSAP will animate
+            }
+        }
+
+        abbr {
+            color: var(--color-white);
+            font-size: var(--font-size-h4);
+            width: 70px;
+            height: 45px;
+            display: inline-block;
+            text-align: center;
+            line-height: 45px;
+            position: absolute;
+            top: 55%;
+            z-index: 1;
+            border-radius: 50px;
+            background: var(--color-primary);
+            box-shadow: 0 1px 10px var(--color-primary),
+                0 5px 30px var(--color-primary);
+            left: 0; // GSAP will position dynamically
+            transform: translateX(-50%); // center on the bar
+        }
+    }
+}

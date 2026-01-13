@@ -1,0 +1,19 @@
+/* ==========================================================================
+   FONTS / SETTINGS
+   ========================================================================== */
+/// Font family
+:root {
+    --font-primary: 'Nunito', sans-serif;
+    --font-secondary: 'PT Sans', sans-serif;
+
+    --font-size-content: #{typo(12px, 18px)};
+
+    /// Grosseur des textes
+    --font-size-h1: #{typo(30px, 50px)};
+    --font-size-h2: #{typo(20px, 40px)};
+    --font-size-h4: #{typo(18px, 25px)};
+    --font-size-h3: #{typo(25px, 30px)};
+    --font-size-link: #{typo(26px, 20px)};
+    --font-size-menu: #{typo(8px, 14px)};
+    --font-size-citation: #{typo(28px, 40px)};
+}

@@ -1,0 +1,15 @@
+@mixin safe-hitzone($size: 44px, $pseudo: after) {
+    position: relative;
+    z-index: 1;
+    
+    &::#{$pseudo} {
+      content: '';
+      height: $size;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      width: $size;
+      z-index: -1;
+    }
+  }

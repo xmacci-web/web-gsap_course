@@ -1,0 +1,23 @@
+.section__hero {
+    padding: var(--spacing-lg) 0;
+
+    background-color: cadetblue;
+    color: var(--color-white) !important;
+    .wrapper {
+        height: 35vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    h1 {
+        color: var(--color-white) !important;
+    }
+    p {
+        font-size: var(--font-size-h4);
+        span {
+            font-size: var(--font-size-h3);
+            font-weight: 700;
+            font-style: italic;
+        }
+    }
+}

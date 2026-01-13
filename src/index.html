@@ -1,0 +1,100 @@
+{% include '_partials/_header.html' %}
+<div class="section__hero">
+    <div class="wrapper">
+        <h1>Cahier de practique</h1>
+        <p>
+            voici mon cahier de practique que j'ai realice pour apprendre plus sur le
+
+            <span>GSAP</span>
+        </p>
+    </div>
+</div>
+<div class="section_square">
+    <div class="wrapper">
+        <h2>Exercise 1 Bouger la boite</h2>
+        <div class="box" data-component="Animation" data-animation="box"></div>
+    </div>
+</div>
+<div class="sections__flair">
+    <div class="wrapper">
+        <h2>Exercise 2 Bouger la pokeball</h2>
+        <div class="js-wrapper_poke">
+            <svg class="icon icon--xl flair" data-component="Animation" data-animation="flair">
+                <use href="#icon-pokemon"></use>
+            </svg>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li>
+                    <a class="button js-play">
+                        play
+                        <svg class="icon icon--md">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="button js-stop">
+                        pause
+                        <svg class="icon icon--md">
+                            <use href="#icon-stop"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="button js-resume">
+                        resume
+                        <svg class="icon icon--md">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="button js-reverse">
+                        reverse
+                        <svg class="icon icon--md">
+                            <use href="#icon-reverse"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="button js-restart">
+                        restart
+                        <svg class="icon icon--md">
+                            <use href="#icon-restart"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="section__skill">
+    <div class="wrapper">
+        <h2>Exercise 3 Bar de Skills</h2>
+        <div class="skills">
+            <div class="bar" data-component="Animation" data-animation="skill">
+                <h4>
+                    NENE\NENITA
+                    <abbr>60%</abbr>
+                    <div class="thumb"><span></span></div>
+                </h4>
+            </div>
+            <div class="bar" data-component="Animation" data-animation="skill">
+                <h4>
+                    NENENITA\NANA
+                    <abbr>80%</abbr>
+                    <div class="thumb"><span></span></div>
+                </h4>
+            </div>
+            <div class="bar" data-component="Animation" data-animation="skill">
+                <h4>
+                    GUSTAVITO\GUSTAVONTE
+                    <abbr>40%</abbr>
+                    <div class="thumb"><span></span></div>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% include '_partials/_footer.html' %}

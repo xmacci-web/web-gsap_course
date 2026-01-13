@@ -1,0 +1,23 @@
+.nav {
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        padding-top: var(--spacing-md);
+        li {
+            list-style: none !important;
+        }
+        @media screen and (max-width: 800px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+.sections__flair {
+    padding: var(--spacing-lg) 0;
+}
+.wrapper_poke {
+    width: 100%;
+}

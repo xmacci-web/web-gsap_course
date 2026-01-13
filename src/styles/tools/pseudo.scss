@@ -1,0 +1,81 @@
+@mixin pseudo(
+    $type: 'background',
+    // "background" ou "underline"
+    $color: 'red',
+    // couleur du ::before/::after
+    $direction: 'left',
+    // direction d'entrée du fond ou direction du soulignement (left, right, top, bottom)
+    $time: 0.3s,
+    // temps de la transition
+    $easing: ease-out,
+    // type de transition
+) {
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    z-index: 0;
+
+    @if $type == 'background' {
+        background: none;
+        background-color: transparent !important;
+        &:hover {
+            background: none;
+            background-color: transparent !important;
+            &::before {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: $color;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all $time $easing;
+
+            @if $direction == left {
+                transform: translateX(-100%);
+            } @else if $direction == right {
+                transform: translateX(100%);
+            } @else if $direction == top {
+                transform: translateY(-100%);
+            } @else if $direction == bottom {
+                transform: translateY(100%);
+            }
+
+            transform-origin: $direction;
+        }
+    } @else if $type == underline {
+        &::after {
+            content: '';
+            position: absolute;
+            height: var(--border-width);
+            background-color: $color;
+            bottom: 0;
+            transition: all $time $easing;
+            z-index: -1;
+
+            @if $direction == right {
+                right: 0;
+                width: 100%;
+                transform: scaleX(0);
+                transform-origin: right;
+            } @else {
+                left: 0;
+                width: 100%;
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+        }
+
+        &:hover {
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+}
