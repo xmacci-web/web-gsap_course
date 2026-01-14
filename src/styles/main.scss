@@ -1,6 +1,7 @@
 //FONTS
 // ici sont chargé les fonts
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;900&family=PT+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Libre+Barcode+39+Text&display=swap');
 // TOOLS
 // mixins et fonctions utilisés globalement dans le SCSS (Sass)
 @import 'tools/cover';
@@ -36,6 +37,9 @@
 @import 'components/icons';
 @import 'components/hero';
 @import 'components/skill';
+@import 'components/header';
+@import 'components/logo';
+@import 'components/links';
 // UTILITIES
 // Utilitaires et classes auxiliaires avec possibilité de remplacer tout ce qui précède, par exemple masquer les éléments de la page
 @import 'utilities/accessibility';

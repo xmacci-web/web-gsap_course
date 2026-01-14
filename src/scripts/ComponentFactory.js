@@ -1,8 +1,9 @@
 import Animation from './components/Animation.js';
+import Header from './components/Header.js';
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
-    this.componentList = { Animation };
+    this.componentList = { Animation, Header };
     this.init();
   }
   init() {

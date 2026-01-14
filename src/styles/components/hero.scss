@@ -1,10 +1,10 @@
 .section__hero {
     padding: var(--spacing-lg) 0;
-
+    height: 35vh;
     background-color: cadetblue;
     color: var(--color-white) !important;
+    margin-top: 120px;
     .wrapper {
-        height: 35vh;
         display: flex;
         flex-direction: column;
         justify-content: center;

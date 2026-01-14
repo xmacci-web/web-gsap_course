@@ -17,3 +17,14 @@
     --font-size-menu: #{typo(8px, 14px)};
     --font-size-citation: #{typo(28px, 40px)};
 }
+.jura-font {
+    font-family: 'Jura', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+.libre-barcode-39-text-regular {
+    font-family: 'Libre Barcode 39 Text', system-ui;
+    font-weight: 600;
+    font-style: normal;
+}

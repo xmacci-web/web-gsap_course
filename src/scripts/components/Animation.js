@@ -35,7 +35,8 @@ export default class Animation {
 
   runAnimation() {
     const animationName = this.element.dataset.animation;
-    console.log('Element:', this.element, 'animationName:', animationName);
+    //voir la liste des animations
+    //console.log('Element:', this.element, 'animationName:', animationName);
 
     const animationFunc = this.animationsList[animationName];
 
@@ -129,7 +130,7 @@ export default class Animation {
             trigger: el,
             start: 'top 80%',
             toggleActions: 'play none none none',
-            invalidateOnRefresh: true, // recalculates values on refresh
+            invalidateOnRefresh: true,
           },
         }
       );
