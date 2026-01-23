@@ -15,7 +15,7 @@
     .bar {
         position: relative;
         width: 100%;
-        color: var(--color-primary);
+        color: var(--color-black);
 
         .thumb {
             position: relative;
@@ -23,7 +23,7 @@
             height: 20px;
             border-radius: 36px;
             margin-top: var(--spacing-md);
-            background: #eee;
+            background: var(--color-bg-secondary);
 
             span {
                 position: absolute;
@@ -49,7 +49,8 @@
             z-index: 1;
             border-radius: 50px;
             background: var(--color-primary);
-            box-shadow: 0 1px 10px var(--color-primary),
+            box-shadow:
+                0 1px 10px var(--color-primary),
                 0 5px 30px var(--color-primary);
             left: 0; // GSAP will position dynamically
             transform: translateX(-50%); // center on the bar

@@ -22,7 +22,7 @@ h1 {
 h2 {
     font-size: var(--font-size-h2);
     font-family: var(--font-secondary);
-    color: var(--color-primary);
+    color: var(--color-black);
 }
 
 h3 {
@@ -41,4 +41,7 @@ h5 {
 
 h6 {
     font-size: var(--font-size-h6);
+}
+.numero {
+    color: var(--color-primary);
 }

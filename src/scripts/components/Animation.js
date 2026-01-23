@@ -1,27 +1,35 @@
-import { gsap } from 'gsap';
+import { gsap, random } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import { ScrollSmoother } from 'gsap/ScrollSmoother.js';
-
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
 export default class Animation {
   constructor(element) {
     this.element = element;
-
-    // Map available animations
-    this.animationsList = {
-      box: this.boxAnimation,
-      flair: this.flairAnimation,
-      skill: this.skillAnimation,
-    };
-
     this.init();
   }
 
   init() {
     this.createSmoothScroll();
-    this;
-    this.runAnimation();
+
+    // Run each animation only if the data attribute exists
+    if ('box' in this.element.dataset) {
+      this.boxAnimation();
+    }
+
+    if ('arrow' in this.element.dataset) {
+      this.arrowAnimation();
+    }
+
+    if ('flair' in this.element.dataset) {
+      this.flairAnimation();
+    }
+
+    if ('skill' in this.element.dataset) {
+      this.skillAnimation();
+    }
+    if ('container' in this.element.dataset) {
+      this.containerAnimation();
+    }
   }
 
   createSmoothScroll() {
@@ -33,24 +41,10 @@ export default class Animation {
     });
   }
 
-  runAnimation() {
-    const animationName = this.element.dataset.animation;
-    //voir la liste des animations
-    //console.log('Element:', this.element, 'animationName:', animationName);
-
-    const animationFunc = this.animationsList[animationName];
-
-    if (animationFunc) {
-      animationFunc.call(this, this.element);
-    } else {
-      console.warn(`Animation "${animationName}" n'existe pas.`);
-    }
-  }
-
-  // Example animations
-  boxAnimation(el) {
-    gsap.to(el, {
-      y: -50,
+  // Box float animation
+  boxAnimation() {
+    gsap.to(this.element, {
+      y: -40,
       duration: 1,
       repeat: -1,
       yoyo: true,
@@ -58,67 +52,73 @@ export default class Animation {
     });
   }
 
-  flairAnimation(el) {
-    const wrapper = document.querySelector('.js-wrapper_poke');
+  // Arrow pulse animation
+  arrowAnimation() {
+    const icons = this.element.querySelectorAll('.icon');
 
-    // Set rotation origin to center
-    gsap.set(el, {
-      transformOrigin: '50% 50%',
+    gsap.to(icons, {
+      y: 40,
+      scaleX: 1.5,
+      duration: 0.8,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+      opacity: 0.9,
+      stagger: { each: 0.9, from: 'start' },
+      transformOrigin: 'center',
     });
+  }
 
-    // Timeline
+  // Flair animation (rotating element across wrapper)
+  flairAnimation() {
+    const wrapper = document.querySelector('.js-wrapper_poke');
+    gsap.set(this.element, { transformOrigin: '50% 50%' });
+
     this.flairTimeline = gsap.timeline({
       paused: true,
       defaults: { ease: 'linear' },
     });
 
-    // Function to update animation based on current width
     const updateAnimation = () => {
       const wrapperWidth = wrapper.getBoundingClientRect().width;
-      const elWidth = el.getBoundingClientRect().width;
-      gsap.set(el, { x: 0, rotation: 0 });
-      // Clear previous tweens
+      const elWidth = this.element.getBoundingClientRect().width;
+      gsap.set(this.element, { x: 0, rotation: 0 });
       this.flairTimeline.clear();
-
-      // Move from 0 to wrapperWidth - elWidth
-      this.flairTimeline.to(el, {
+      this.flairTimeline.to(this.element, {
         x: wrapperWidth - elWidth,
         rotation: 360,
         duration: 2,
       });
     };
 
-    // Initialize animation
     updateAnimation();
 
-    // Buttons
+    // Optional control buttons
     const playBtn = document.querySelector('.js-play');
     const stopBtn = document.querySelector('.js-stop');
     const resumeBtn = document.querySelector('.js-resume');
     const reverseBtn = document.querySelector('.js-reverse');
     const restartBtn = document.querySelector('.js-restart');
 
-    playBtn.addEventListener('click', () => this.flairTimeline.play());
-    stopBtn.addEventListener('click', () => this.flairTimeline.pause());
-    resumeBtn.addEventListener('click', () => this.flairTimeline.resume());
-    reverseBtn.addEventListener('click', () => this.flairTimeline.reverse());
-    restartBtn.addEventListener('click', () => this.flairTimeline.restart());
+    playBtn?.addEventListener('click', () => this.flairTimeline.play());
+    stopBtn?.addEventListener('click', () => this.flairTimeline.pause());
+    resumeBtn?.addEventListener('click', () => this.flairTimeline.resume());
+    reverseBtn?.addEventListener('click', () => this.flairTimeline.reverse());
+    restartBtn?.addEventListener('click', () => this.flairTimeline.restart());
 
-    // Update animation on window resize
-    window.addEventListener('resize', () => {
-      updateAnimation();
-    });
+    window.addEventListener('resize', updateAnimation);
   }
-  skillAnimation(el) {
-    const thumb = el.querySelector('.thumb span');
-    const abbr = el.querySelector('abbr');
+
+  // Skill bar animation
+  skillAnimation() {
+    const thumb = this.element.querySelector('.thumb span');
+    const abbr = this.element.querySelector('abbr');
     const percent = parseInt(abbr.textContent);
 
     const animate = () => {
-      const thumbWidth = el.querySelector('.thumb').offsetWidth;
+      const thumbWidth = this.element.querySelector('.thumb').offsetWidth;
       const abbrWidth = abbr.offsetWidth;
 
-      // Thumb animation
       gsap.fromTo(
         thumb,
         { width: 0 },
@@ -127,15 +127,14 @@ export default class Animation {
           duration: 2,
           ease: 'power2.inOut',
           scrollTrigger: {
-            trigger: el,
+            trigger: this.element,
             start: 'top 80%',
             toggleActions: 'play none none none',
             invalidateOnRefresh: true,
           },
-        }
+        },
       );
 
-      // Abbr animation
       gsap.fromTo(
         abbr,
         { x: 0 },
@@ -144,21 +143,21 @@ export default class Animation {
           duration: 2,
           ease: 'power2.inOut',
           scrollTrigger: {
-            trigger: el,
+            trigger: this.element,
             start: 'top 80%',
             toggleActions: 'play none none none',
             invalidateOnRefresh: true,
           },
-        }
+        },
       );
     };
 
     animate();
 
-    // Update on resize
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh();
       animate();
     });
   }
+  containerAnimation() {}
 }

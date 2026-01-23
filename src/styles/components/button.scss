@@ -26,13 +26,14 @@
         background-color: var(--color-primary);
         transform-origin: bottom left;
         transform: scaleX(0.05) scaleY(1);
-        transition: transform 0.6s $ease-in-out-quart,
+        transition:
+            transform 0.6s $ease-in-out-quart,
             clip-path 0.9s $ease-out-quart;
         @media screen and (max-width: 800px) {
-            width: 50%;
+            width: 100%;
         }
         @media screen and (max-width: 500px) {
-            width: 70%;
+            width: 90%;
         }
     }
 
