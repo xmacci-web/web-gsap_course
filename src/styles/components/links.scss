@@ -28,7 +28,8 @@
     position: relative;
     list-style: none;
     display: block;
-
+    transform: scale(1);
+    transition: all 0.3s $ease-out-expo;
     &::before {
         content: '';
         position: absolute;
@@ -49,5 +50,6 @@
         --underline-scale: 1.25;
         color: var(--color-primary);
         opacity: 1;
+        transform: scale(1.1);
     }
 }

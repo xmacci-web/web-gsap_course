@@ -159,5 +159,33 @@ export default class Animation {
       animate();
     });
   }
-  containerAnimation() {}
+
+  containerAnimation(rows = 10, cols = 10) {
+    this.element.innerHTML = '';
+    const circles = [];
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.gridRowStart = r + 1;
+        circle.style.gridColumnStart = c + 1;
+        this.element.appendChild(circle);
+        circles.push(circle);
+      }
+    }
+
+    gsap.to(circles, {
+      scale: 0.1,
+      opacity: 0,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+      stagger: {
+        amount: 1,
+        from: 'edges',
+        grid: [rows, cols],
+      },
+    });
+  }
 }
