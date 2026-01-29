@@ -64,7 +64,7 @@ export default class Animation {
       yoyo: true,
       ease: 'power1.inOut',
       opacity: 0.9,
-      stagger: { each: 0.9, from: 'start' },
+      stagger: { each: 0.9, from: 'random' },
       transformOrigin: 'center',
     });
   }
@@ -132,7 +132,7 @@ export default class Animation {
             toggleActions: 'play none none none',
             invalidateOnRefresh: true,
           },
-        },
+        }
       );
 
       gsap.fromTo(
@@ -148,7 +148,7 @@ export default class Animation {
             toggleActions: 'play none none none',
             invalidateOnRefresh: true,
           },
-        },
+        }
       );
     };
 
